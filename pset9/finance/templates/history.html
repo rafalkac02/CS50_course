@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Operation</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for transaction in transactions %}
+                {% if transaction.type == "bought" %}
+
+                <tr style="color:green">
+                    <td>{{ transaction["time"] }}</td>
+                    <td>{{ transaction["type"] }}</td>
+                    <td>{{ transaction["symbol"] }}</td>
+                    <td>{{ transaction["shares"] }}</td>
+                    <td>{{ transaction["price"] }}</td>
+                </tr>
+
+                {% else %}
+                <tr style="color:red">
+                    <td>{{ transaction["time"] }}</td>
+                    <td>{{ transaction["type"] }}</td>
+                    <td>{{ transaction["symbol"] }}</td>
+                    <td>{{ transaction["shares"] }}</td>
+                    <td>{{ transaction["price"] }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
