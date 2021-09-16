@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Data
+{% endblock %}
+
+{% block content %}
+<fieldset class="form-group">
+    <legend class="border-bottom mb-4">This is the result of the comparison ran on <a style="color:blue;">{{ datetime }}</a></legend>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>1st author</th>
+                <th>2nd author</th>
+                <th>similarity</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for pair in pairs %}
+             <tr>
+                 <td>{{ pair.author_1 }}</td>
+                 <td>{{ pair.author_2 }}</td>
+                 <td>{{ pair.similarity }}</td>
+             </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+</fieldset>
+{% endblock content %}

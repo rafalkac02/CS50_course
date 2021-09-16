@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date & Time</th>
+            <th>Files compared</th>
+            <th>Highest similarity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.datetime }}</td>
+            <td>{{ row.n }}</td>
+            <td>{{ row.similarity }}</td>
+            <td>
+                <form action="/data" method="post">
+                    <input type="hidden" name="datetime" value="{{row.datetime}}">
+                    <button class="btn btn-success btn-sm" type="submit">Retrieve data</button>
+                </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

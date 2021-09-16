@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Similarities
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>1st author</th>
+            <th>2nd author</th>
+            <th>similarity</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for pair in sorted_pairs %}
+         <tr>
+             <td>{{ pair.author_1 }} ({{ pair.filename_1 }}) </td>
+             <td>{{ pair.author_2 }} ({{ pair.filename_2 }}) </td>
+             <td>{{ pair.similarity }}</td>
+         </tr>
+         {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
